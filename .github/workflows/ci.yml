@@ -1,0 +1,21 @@
+name: Python Library
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with: python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python3 -m pip3 install --upgrade pip3
+        if [ -f requirements.txt ]; then pip3 install -r requirements.txt; fi
+    - name: Test with pytest
+      run: |
+        python3 -m unittest
