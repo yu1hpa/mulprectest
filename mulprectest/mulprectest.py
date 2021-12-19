@@ -27,4 +27,4 @@ class Mulprectest:
         else:
             for si in range(len(self.string)):
                 if(PI[si] != self.string[si]):
-                    return si
+                    return si - 1
