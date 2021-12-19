@@ -21,10 +21,30 @@ class Mulprectest:
 
         if(self.is_rm):
             rep_PI = PI.replace('.', '')
-            for si in range(len(self.string)):
+            for si, is_last in self.last(range(len(self.string))):
                 if(rep_PI[si] != self.string[si]):
                     return si
+                if(is_last):
+                    return si + 1
         else:
-            for si in range(len(self.string)):
+            for si, is_last in self.last(range(len(self.string))):
                 if(PI[si] != self.string[si]):
                     return si - 1
+                if(is_last):
+                    return si
+
+    def last(self, iterable):
+        """
+        Args:
+            iterable    (iter): The iterator
+
+        Return:
+            is_last     (bool): Last or not
+        """
+        it = iter(iterable)
+        last = next(it)
+        for val in it:
+            yield last, False
+            last = val
+
+        yield last, True
