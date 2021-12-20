@@ -1,7 +1,7 @@
 import re
 import sympy
 class Mulprectest:
-    def __init__(self, digit: int, string: str, is_rm=True):
+    def __init__(self, digit: int, string: str):
         """
         Args:
             digit   (int): The PI size
@@ -14,7 +14,7 @@ class Mulprectest:
 
         self.digit = digit
         self.string = string
-        self.is_rm = is_rm
+        self.is_rm = ('.' not in self.string)
 
     def mulprectest(self):
         PI = str(sympy.pi.evalf(self.digit))
