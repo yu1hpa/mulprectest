@@ -1,11 +1,11 @@
 import re
 import sympy
 class Mulprectest:
-    def __init__(self, digit: int, string: str, is_rm=True):
+    def __init__(self, digit: int, approx_pi: str):
         """
         Args:
             digit   (int): The PI size
-            string  (str): The strings gotten from stdout
+            approx_pi  (str): The strings gotten from stdout
             is_rm   (bool): The flag whether or not remove the (dec) point
 
         Returns:
@@ -13,22 +13,22 @@ class Mulprectest:
         """
 
         self.digit = digit
-        self.string = string
-        self.is_rm = is_rm
+        self.approx_pi = approx_pi
+        self.is_rm = ('.' not in self.approx_pi)
 
     def mulprectest(self):
         PI = str(sympy.pi.evalf(self.digit))
 
         if(self.is_rm):
             rep_PI = PI.replace('.', '')
-            for si, is_last in self.last(range(len(self.string))):
-                if(rep_PI[si] != self.string[si]):
+            for si, is_last in self.last(range(len(self.approx_pi))):
+                if(rep_PI[si] != self.approx_pi[si]):
                     return si
                 if(is_last):
                     return si + 1
         else:
-            for si, is_last in self.last(range(len(self.string))):
-                if(PI[si] != self.string[si]):
+            for si, is_last in self.last(range(len(self.approx_pi))):
+                if(PI[si] != self.approx_pi[si]):
                     return si - 1
                 if(is_last):
                     return si

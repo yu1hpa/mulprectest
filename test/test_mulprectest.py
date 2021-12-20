@@ -22,7 +22,7 @@ class TestMulprectest(unittest.TestCase):
         self.assertEqual(actual, expected)
 
         pi2 = "3.1415926535897932384626433832795028841971693993751058209749445923"
-        mpt = Mulprectest(100, pi2, False)
+        mpt = Mulprectest(100, pi2)
         expected = 65
         actual = mpt.mulprectest()
         self.assertEqual(actual, expected)
